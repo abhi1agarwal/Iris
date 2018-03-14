@@ -13,10 +13,10 @@ Confusion matrix: [[ 7  0  0]
  [ 0  0 11]]
 
 classification_report::
-                 precision    recall  f1-score   support
+              precision    recall  f1-score   support
 
-    Iris-setosa       1.00      1.00      1.00         7
-Iris-versicolor       1.00      0.83      0.91        12
- Iris-virginica       0.85      1.00      0.92        11
+Iris-setosa       1.00      1.00      1.00         7
+Iris-versicolor   1.00      0.83      0.91        12
+Iris-virginica    0.85      1.00      0.92        11
 
-    avg / total       0.94      0.93      0.93        30
+avg / total       0.94      0.93      0.93        30
