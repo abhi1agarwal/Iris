@@ -1,3 +1,4 @@
+from __future__ import print_function
 import pandas
 from pandas.tools.plotting import scatter_matrix
 import matplotlib.pyplot as plt
@@ -43,7 +44,7 @@ dataset = pandas.read_csv(url, names=names)
 
 
 array = dataset.values
-print(array)
+# print(array)
 
 X = array[:,0:4]
 Y = array[:,4]
@@ -71,9 +72,12 @@ for name, model in models:
 	cv_results = model_selection.cross_val_score(model, X_train, Y_train, cv=kfold, scoring=scoring)
 	results.append(cv_results)
 	names.append(name)
-	print(cv_results)
+	for accx in cv_results:
+		print ("%.2f" % (accx), end = ', ') 
+	print("")
 	msg = "%s: %f (%f)" % (name, cv_results.mean(), cv_results.std())
-	print(msg)
+	print (msg,end = "\n\n")
+
 
 # # Compare Algorithms
 # fig = plt.figure()
@@ -86,12 +90,12 @@ for name, model in models:
 
 
 # Make predictions on validation dataset
-knn = KNeighborsClassifier()
-knn.fit(X_train, Y_train)
-predictions = knn.predict(X_validation)
+svm = SVC()
+svm.fit(X_train, Y_train)
+predictions = svm.predict(X_validation)
 print(len(predictions))
-for x in range(0,len(predictions)):
-	print(predictions[x]+" , "+Y_validation[x])
+# for x in range(0,len(predictions)):
+# 	print(predictions[x]+" , "+Y_validation[x])
 print(accuracy_score(Y_validation, predictions))
 print(confusion_matrix(Y_validation, predictions))
 print(classification_report(Y_validation, predictions))
